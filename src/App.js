@@ -1,4 +1,3 @@
-
 import React from 'react'; // Add this line
 import './index.css';
 // import Dashboard from './pages/Dashboard';
