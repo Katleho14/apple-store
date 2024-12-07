@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux'; // Import useSelector to fetch data from the Redux store
 import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
-import '../Styles/checkout.css';
+import '../styles/checkout.css'
 
 function CheckoutPage() {
     const navigate = useNavigate(); // Hook to programmatically navigate

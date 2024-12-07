@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-import '..styles/PaymentPage/AddNewCard'
+import '../styles/AddNewCard.css'
 
 const AddNewCard = () => {
     const [cardholderName, setCardholderName] = useState("John Maker");
