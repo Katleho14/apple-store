@@ -1,0 +1,21 @@
+.card-selection {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+.card-selection h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.card-option {
+    font-size: 16px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.card-option i {
+    margin-right: 8px;
+}
