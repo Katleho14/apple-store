@@ -1,0 +1,138 @@
+span {
+    display: flex;
+  }
+  
+  .address-container {
+    background-color: #ededed;
+    width:60%;
+    display: block;
+    margin: 0 auto;
+    margin-top: 60px;
+    margin-bottom: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .address-btn{
+    width: 41em;
+  }
+  .address-form {
+    background-color: white;
+    padding-top: 20px;
+    padding-left: 50px;
+    border-radius: 8px;
+    padding-bottom: 40px;
+    width: 70%;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .address-form input[type="text"] {
+  margin-top: 4px;
+  width: 90%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background-color: white;
+  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.4),
+              -4px -4px 15px rgba(255, 255, 255, 0.7);
+  outline: none;
+  border-radius: 5px;
+  font-weight: 400;
+  font-size: 14px;
+  }
+  
+  .address-form input[type="checkbox"] {
+   background-color: #4CAF50;
+  }
+  
+  .address-form label {
+    font-family: "Montserat", system-ui;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+    color: grey;
+  }
+  
+  .address-form p {
+    color: grey;
+  }
+  
+  .address-form input[type="button"] {
+    background-color: black;
+    color: white;
+    width: 93%;
+    padding: 6px;
+    border-radius: 6px;
+    border: 1px solid black;
+  }
+  
+  .address-form a {
+    margin-top: 36px;
+  }
+  
+  .last-details {
+    display: flex !important;
+    justify-content: space-between !important;
+    width: 90% !important;
+  }
+  
+  
+  .lock {
+    display: flex;
+    align-items: center;
+  }
+  
+  .icon {
+    margin-top: 17px;
+    font-size: medium;
+  }
+  .connection {
+    color: #4CAF50 !important;
+    margin-top: 36px;
+    margin-left: 8px;
+  }
+  
+  @media (max-width: 768px) {
+    .address-container {
+      width: 100%; 
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  
+    .address-form {
+      padding-left: 15px; 
+      padding-right: 15px;
+    }
+  
+    .address-form input[type="text"] {
+      font-size: 13px; 
+    }
+  
+    .address-form input[type="button"] {
+      padding: 8px; 
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .address-container {
+      width: 100%;
+      margin-top: 20px;
+    }
+  
+    .address-form {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  
+    .last-details {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .connection {
+      margin-top: 10px;
+    }
+  
+    .icon {
+      font-size: small; 
+    }
+  }
