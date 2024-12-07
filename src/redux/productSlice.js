@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import watchProduct from '../../Assets/watchProduct.png';
-import headsets from '../../Assets/headsets.png';
-import blackphone from '../../Assets/blackphone.png';
-import bluephone from '../../Assets/bluephone.png';
-import redphone from '../../Assets/redphone.png';
-import whitephone from '../../Assets/whitephone.png';
+import watchProduct from '../Assets/watchProduct.png';
+import headsets from '../Assets/headsets.png';
+import blackphone from '../Assets/blackphone.png';
+import bluephone from '../Assets/bluephone.png';
+import redphone from '../Assets/redphone.png';
+import whitephone from '../Assets/whitephone.png';
 
 
 
