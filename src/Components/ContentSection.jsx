@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "../styles/ContentSection.css";
-import SideBar from "./SideBar";
+import SideBar from './SideBar';
 import SearchBar from "./SearchBar";
 import DashboardBag from "./DashboardBag";
 import addbagIcon from '../Assets/addbagIcon.png';

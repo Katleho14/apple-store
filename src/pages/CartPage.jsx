@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addItem, removeFromCart } from '../redux/slices/cartSlice';
 import { useNavigate } from 'react-router-dom';
-import SideBar from '../components/SideBar';
+
 import '../styles/CartPage.css';
 // import DashboardBag from '../components/DashboardBag'; 
 
@@ -62,7 +62,7 @@ const CartPage = () => {
 
   return (
     <div className="cart-page-wrapper">
-      <SideBar />
+      
 
       <div className="cart-page-container">
         <div className="cart-items-section">
