@@ -1,0 +1,110 @@
+.bag-container {
+    background-color: #eaeaea;
+    padding: 20px;
+    padding-right: 50px;
+    border-radius: 10px;
+    width: 100vh;
+    margin: 0 auto;
+    height: 80vh; /* Set a fixed height for the container */
+    overflow-y: scroll; /* Enable vertical scrolling */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .bag-container h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #343a40;
+  }
+  
+  .bag-items-con {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    width: 100%; /* Ensure full width fits inside container */
+    height: 25vh;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .bag-image img {
+    width: 200px;
+    border-radius: 10px;
+  }
+  
+  .bag-details {
+    margin-left: 20px;
+    flex-grow: 1;
+  }
+  
+  .bag-details h3 {
+    font-size: 1.5rem;
+    margin: 0;
+    font-weight: bold;
+    color: #343a40;
+  }
+  
+  .bag-details .color {
+    color: grey;
+    margin: 5px 0;
+  }
+  
+  .bag-details .description {
+    color: #7b7b7b;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+  }
+  
+  .bag-details .rating {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .bag-details .rating span {
+    color: #2aa645;
+  }
+  
+  .bag-details .rating p {
+    margin-left: 5px;
+    color: #2aa645;
+    font-weight: bold;
+  }
+  
+  .bag-details .price {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .bag-details .price span {
+    color: #7b7b7b;
+  }
+  
+  .quantity-controls {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  
+  .quantity-controls button {
+    background-color: transparent;
+    width: 2vh;
+    border: none;
+    font-size: 1.5rem;
+    color: #ff4d4d;
+    cursor: pointer;
+    margin: 0 10px;
+  }
+  
+  .quantity-controls span {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  

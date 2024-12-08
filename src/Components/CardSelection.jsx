@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/cardselection.css'
+import '../styles/Payment/CardSelection.css'
 
 const CardSelection = () => {
     return (
