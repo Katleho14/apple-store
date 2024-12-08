@@ -1,7 +1,8 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux'; // Import useSelector and useDispatch
 import { increaseQuantity, decreaseQuantity } from '../redux/cartSlice'; // Import actions
-import '../styles'
+import '../styles/bag.css'
+
 
 const BagItems = () => {
   const items = useSelector((state) => state.cart.items); // Access the cart items from Redux store

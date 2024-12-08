@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Styles/searchbar.css';
+import '../styles/searchbar.css';
 
 const SearchBar = () => {
   return (

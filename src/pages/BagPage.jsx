@@ -1,6 +1,6 @@
 import React from 'react'
-
-import '../Styles/Dashboard.css';
+import '@fortawesome/free-solid-svg-icons'
+import '../styles/Dashboard.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Sidebag from '../Components/SideBag';
 import BagItems from '../Components/BagItems';

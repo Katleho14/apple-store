@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addToCart } from '../state/cartSlice'; // Import addToCart action
+import { addToCart } from '../redux/cartSlice'; // Import addToCart action
 import { Link } from 'react-router-dom'; 
-import '../Styles/Dashboard/ProductGrid.css';
+import '../styles/ProductGrid.css';
 import addCartBtn from '../Assets/addCartBtn.png';
 
 const ProductGrid = () => {
