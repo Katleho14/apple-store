@@ -1,8 +1,8 @@
 import React from 'react';
-import '../Styles/sidebar.css';
+import '../styles/sidebar.css';
 import { FaShoppingBag, FaBars, FaStore, FaSignOutAlt } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
-import logoImage from '../Assets/logo.png';
+import logoImage from '../Assets/logoImage.png';
 
 const Sidebar = () => {
   return (

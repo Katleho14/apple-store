@@ -1,5 +1,4 @@
-import React from 'react'
-import '@fortawesome/free-solid-svg-icons'
+import React from 'react';
 import '../styles/Dashboard.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Sidebag from '../Components/SideBag';

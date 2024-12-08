@@ -1,14 +1,14 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import '../Styles/Dashboard/sidebag.css';
-import '../Styles/sidebar.css';
-import '../Styles/product-page.css';
+import '../styles/sidebag.css';
+import '../styles/sidebar.css';
+import '../styles/product-page.css';
 import { FaArrowLeft } from 'react-icons/fa';
-import Sidebar from '../components/Sidebar';
+import Sidebar from '../Components/Sidebar';
 import Sidebag from '../Components/SideBag';
 import { useSelector, useDispatch } from 'react-redux'; // Import useDispatch
-import { addToCart } from '../state/cartSlice'; // Import addToCart action
-import '../Styles/Dashboard.css';
+import { addToCart } from '../redux/cartSlice'; // Import addToCart action
+import '../styles/Dashboard.css';
 
 const ProductPage = () => {
   const { id } = useParams(); // Get product ID from the URL parameter
