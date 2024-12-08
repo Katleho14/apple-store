@@ -5,7 +5,7 @@ import '../Styles/sidebar.css';
 import '../Styles/product-page.css';
 import { FaArrowLeft } from 'react-icons/fa';
 import Sidebar from '../components/Sidebar';
-import Sidebag from '../components/Sidebag';
+import Sidebag from '../Components/SideBag';
 import { useSelector, useDispatch } from 'react-redux'; // Import useDispatch
 import { addToCart } from '../state/cartSlice'; // Import addToCart action
 import '../Styles/Dashboard.css';

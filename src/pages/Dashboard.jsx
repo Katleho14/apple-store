@@ -1,10 +1,10 @@
 import React from 'react';
 import Sidebar from '../components/Sidebar';
-import SearchBar from '../components/SearchBar';
+import SearchBar from '../Components/SearchBar'
 import '../Styles/Dashboard.css';
-import ProductGrid from '../components/ProductGrid';
+import ProductGrid from '../Components/ProductGrid';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import Sidebag from '../components/Sidebag';
+import Sidebag from '../Components/SideBag';
 
 
 const Dashboard = () => {
