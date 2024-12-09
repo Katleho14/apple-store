@@ -1,0 +1,3 @@
+// actionTypes.js
+export const UPDATE_ADDRESS = 'UPDATE_ADDRESS';
+export const UPDATE_PAYMENT_METHOD = 'UPDATE_PAYMENT_METHOD';

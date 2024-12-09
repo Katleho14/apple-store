@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
-import ProductPage from './pages/ProductPage';
+
 import Payment from './pages/Payment';
 import Address from './pages/Address';
-import BagPage from './pages/BagPage';
+import CartPage from './pages/CartPage';
 import CheckoutPage from './pages/Checkout';
 
 
@@ -15,11 +15,9 @@ function App() {
           {/* The path for the main dashboard page */}
           <Route path="/" element={<Dashboard />} />
 
-          {/* The path for the product page now includes a product ID as a URL parameter */}
-          <Route path="/product/:id" element={<ProductPage />} />
 
           {/* Other routes remain unchanged */}
-          <Route path="/bag" element={<BagPage />} />
+          <Route path="/bag" element={<CartPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/address" element={<Address />} />
           <Route path="/payment" element={<Payment />} />

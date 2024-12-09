@@ -1,11 +1,8 @@
-
-
 // redux/store.js
 import { combineReducers, configureStore } from '@reduxjs/toolkit'; 
-import cartReducer from '../redux/addressSlice'
-import productSlice from '../redux/productSlice'
-import checkoutSlice from '../redux/checkoutSlice';
-import addressReducer from './addressSlice'
+import cartReducer from './cartSlice';
+import productSlice from './productSlice';
+import checkoutSlice from './checkoutSlice';
 
 
 
@@ -14,8 +11,6 @@ const rootReducer = combineReducers({
     cart: cartReducer, // Use the actual slice reducer
     products : productSlice,
     checkout: checkoutSlice,
-    address: addressReducer,
-
 
 });
 
@@ -25,3 +20,5 @@ const store = configureStore({
 })
 
 export default store;
+
+
