@@ -1,14 +1,27 @@
-import { configureStore } from '@reduxjs/toolkit';
-import productReducer from './productSlice';  // This will handle product state
-import cartReducer from './cartSlice'; 
+
+
+// redux/store.js
+import { combineReducers, configureStore } from '@reduxjs/toolkit'; 
+import cartReducer from '../redux/addressSlice'
+import productSlice from '../redux/productSlice'
+import checkoutSlice from '../redux/checkoutSlice';
 import addressReducer from './addressSlice'
 
-const store = configureStore({
-  reducer: {
-    products: productReducer,  // Add the product reducer here
-    cart: cartReducer, // Add the cart reducer to the store
+
+
+
+const rootReducer = combineReducers({
+    cart: cartReducer, // Use the actual slice reducer
+    products : productSlice,
+    checkout: checkoutSlice,
     address: addressReducer,
-  },
+
+
 });
+
+const store = configureStore({
+  reducer:rootReducer
+
+})
 
 export default store;

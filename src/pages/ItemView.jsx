@@ -1,41 +1,44 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
-import '../styles/sidebag.css';
-import '../styles/sidebar.css';
-import '../styles/product-page.css';
-import { FaArrowLeft } from 'react-icons/fa';
-import Sidebar from '../Components/Sidebar';
-import Sidebag from '../Components/SideBag';
-import { useSelector, useDispatch } from 'react-redux'; // Import useDispatch
-import { addToCart } from '../redux/cartSlice'; // Import addToCart action
-import '../styles/Dashboard.css';
+import {  Link, useParams } from 'react-router-dom';
+import '../styles/ItemView.css';
+import { useSelector, useDispatch } from 'react-redux';
+import {addItem} from '../redux/slices/cartSlice';
+import SideBar from '../Components/SideBar';
+import DashboardBag from '../Components/DashboardBag'
 
-const ProductPage = () => {
+
+
+const ItemView = () => {
   const { id } = useParams(); // Get product ID from the URL parameter
   const product = useSelector((state) =>
-    state.products.items.find((item) => item.id === parseInt(id))
+    state.products.items.find((product) => product.id === parseInt(id)) // Correct variable name
   ); // Find the product based on the ID
+
+
+  console.log(product)//test
   const dispatch = useDispatch(); // Initialize dispatch
 
   // Handle adding product to cart
   const handleAddToCart = () => {
-    dispatch(addToCart(product)); // Dispatch the addToCart action with the current product
+    dispatch(addItem(product)); // Dispatch the addItem action with the current product
   };
 
   // If the product is not found, return an error message
   if (!product) {
     return <div>Product not found!</div>;
   }
-
+//className="sidebar"
   return (
+    <>
+   
     <div className="detail-page">
-       <Sidebar className='sidebar'/>
+    <SideBar className="sidebar"/>
       <div className="product-page-section">
         <div className="product-img">
           <span className="back-text">
-            <FaArrowLeft className="back-icon" />
-            <a href="/">Back</a> <br />
+           <Link to="/"> Back </Link> 
           </span>
+          
           <div className="side-images">
             {/* Side images, these could be different angles of the product */}
             <img src={product.image} alt={product.name} />
@@ -44,7 +47,7 @@ const ProductPage = () => {
           </div>
 
           {/* Main product image */}
-          <img src={product.image} alt={product.name} />
+          <img src={product.image} alt={product.name} className='main-image' />
           <div className="product-details">
             <h1 className="product-h1">{product.name}</h1>
             <h3 className="product-h3">{product.description}</h3>
@@ -64,14 +67,14 @@ const ProductPage = () => {
         <button className="add-to-bag" onClick={handleAddToCart}>
           <i className="fa-solid fa-bag-shopping-plus"></i> Add to bag
         </button>
-        
         <hr />
         <h2>Description</h2>
         <p>{product.longDescription}</p>
       </div>
-      <Sidebag className='sidebag'/>
+      <DashboardBag className="sidebag" /> {/* Assuming DashboardBag is Sidebag */}
     </div>
+    </>
   );
 };
 
-export default ProductPage;
+export default ItemView;
