@@ -1,86 +1,154 @@
 import React from 'react';
-import { useSelector } from 'react-redux'; // Import useSelector to fetch data from the Redux store
-import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
-import '../styles/checkout.css'
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import '../styles/checkout.css'; 
 
-function CheckoutPage() {
-    const navigate = useNavigate(); // Hook to programmatically navigate
-    const address = useSelector((state) => state.address || {}); // Get address from Redux store
-    const paymentMethod = useSelector((state) => state.paymentMethod || {}); // Get payment method from Redux store
 
-    // Get cart items and total price from Redux store
-    const cartItems = useSelector((state) => state.cart.items || []);
-    const totalPrice = useSelector((state) => state.cart.totalPrice || 0);
+// Main CheckoutPage component
+function Checkout() {
+    const navigate = useNavigate();
+    const address = useSelector((state) => state.checkout.address);
+    const paymentMethod = useSelector((state) => state.checkout.paymentMethod);
+    const cartItems = useSelector((state) => state.cart.cartItems || [] );
+
+    const totalPrice = cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0);  // Safely reduce cartItems
+    ;
+console.log('Checkout State:', {
+    address,
+    paymentMethod,
+    cartItems,
+});
+
+
+
+
+
+    console.log('Cart Items:', cartItems); // Debugging line
 
     const handlePlaceOrder = () => {
-        // Navigate to the /payment route
-        navigate('/payment');
+        alert('Order Placed')
+    };
+
+    const handleChangeShipping = () => {
+        navigate('/shipping-add'); // Navigate to ShippingAdd component
+    };
+
+    const handleChangePayment = () => {
+        // navigate('/payment-method'); // Navigate to PaymentMeth component
+        navigate('/payment-method');
     };
 
     return (
         <div className="checkout-page">
-            <ShippingAddress address={address} />
-            <PaymentMethod paymentMethod={paymentMethod} />
-            <ReviewYourBag cartItems={cartItems} />
-            <OrderSummary cartItems={cartItems} totalPrice={totalPrice} />
+            <ShippingAddress address={address} onChange={handleChangeShipping} />
+            <PaymentMethod paymentMethod={paymentMethod} onChange={handleChangePayment} />
+            <ReviewYourBag cartItems={cartItems} totalPrice={totalPrice} />
+            <OrderSummary totalPrice={totalPrice} />
             <button onClick={handlePlaceOrder}>Place your order</button>
         </div>
     );
 }
 
-function ShippingAddress({ address }) {
+// ShippingAddress component
+function ShippingAddress({ address, onChange }) {
     return (
         <div className="shipping-address">
             <h2>Shipping Address</h2>
-            <p>{address.name}</p>
-            <p>{address.street || 'Street Not Provided'}, {address.city || 'City Not Provided'}, {address.state || 'State Not Provided'}, {address.country || 'Country Not Provided'}</p>
-            <button>Change</button>
-        </div>
-    );
-}
+                   {address ? (
+                    <div>
+                        <p>{address.name}</p>
+                        <p>{address.street}</p>
+                        <p>{address.city}, {address.zip}</p>
+                        <p>{address.country}</p>
+                        <button onClick={onChange}>Change</button>
+                    </div>
+                ) : (
+                    <>
+                    <p>No address provided.</p>
+                    <button onClick={onChange}>Change</button>
+                    </>
+                )}
+            </div>
+    )};
 
-function PaymentMethod({ paymentMethod }) {
+
+
+// PaymentMethod component
+function PaymentMethod({ paymentMethod={}, onChange }) {
+    console.log('Payment Method:', paymentMethod); // Debugging line
+    const lastFourDigits = paymentMethod?.cardNumber ? paymentMethod.cardNumber.slice(-4) : '####';
+ 
+    
+
     return (
         <div className="payment-method">
             <h2>Payment Method</h2>
-            <p>
-                <i className="fa fa-credit-card"></i> 
-                {paymentMethod.type || 'Type Not Provided'} ending in {paymentMethod.lastFourDigits || '####'}
-            </p>
-            <p>
-                <i className="fa fa-gift"></i> 
-                ${paymentMethod.giftCardBalance || '0.00'} gift card balance
-            </p>
-            <label>
-                <input type="checkbox" checked /> Billing address same as Shipping Address
-            </label>
-            <button>Change</button>
-        </div>
-    );
-}
-
-function ReviewYourBag({ cartItems }) {
-    return (
-        <div className="review-your-bag">
-            <h2>Review Your Bag</h2>
-            {cartItems.length > 0 ? (
-                cartItems.map((item) => (
-                    <div key={item.id} className="cart-item">
-                        <p>{item.name}</p>
-                        <p>${item.price.toFixed(2)}</p>
-                        <div className="quantity">
-                            <p>Quantity: {item.quantity}</p>
-                        </div>
+                  {paymentMethod ? (
+                    <div>
+                        <p>Card Number: **** **** **** {lastFourDigits}</p>
+                        <p>Expiry Date: {paymentMethod.expiryDate}</p>
+                        <button onClick={onChange}>Change</button>
                     </div>
-                ))
+                ) : (
+                    <>
+                    <p>No payment method provided.</p>
+                    <button onClick={onChange}>Change</button>
+                    </>
+                )}
+            </div>
+    )};
+
+
+// Helper function to determine card type based on card number
+// function getCardType(number) {
+//     const re = {
+//         Visa: /^4/,
+//         MasterCard: /^5[1-5]/,
+//         AMEX: /^3[47]/,
+//         Discover: /^6(?:011|5)/,
+//     };
+
+//     for (const card in re) {
+//         if (re[card].test(number)) {
+//             return card;
+//         }
+//     }
+//     return 'Unknown';
+// }
+
+
+
+const ReviewYourBag = () => {
+    // Assuming cartItems is coming from the Redux store
+    const cartItems = useSelector((state) => state.cart?.cartItems || []);
+
+    // Check the length safely
+    const itemCount = cartItems.length;
+
+    return (
+        <div>
+        <h2>Your Bag</h2>
+            {itemCount > 0 ? (
+                <ul>
+                    {cartItems.map((item) => (
+                        <>
+                         {/* key={item.id}> */}
+                            <img src={item.image} alt={item.name} width="50" />
+                            <span>{item.name} x {item.quantity}</span>
+                        </>
+                    ))}
+                </ul>
             ) : (
-                <p>Your bag is empty</p>
+                <p>Your bag is empty.</p>
             )}
         </div>
     );
-}
+};
 
-function OrderSummary({ cartItems, totalPrice }) {
+
+
+// OrderSummary component
+function OrderSummary({ totalPrice }) {
     const calculateTotal = () => {
         const shipping = 6.99;
         const gst = totalPrice * 0.13; // 13% GST on total price
@@ -98,4 +166,5 @@ function OrderSummary({ cartItems, totalPrice }) {
     );
 }
 
-export default CheckoutPage;
+export default Checkout;
+

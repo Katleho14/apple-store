@@ -1,0 +1,60 @@
+
+.shipping-address-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.shipping-address-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+.shipping-address-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.shipping-address-form input[type="text"] {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+.shipping-address-form input[type="text"]:focus {
+    border-color: black;
+    outline: none;
+    box-shadow: 0 0 5px black
+}
+
+.shipping-address-form button {
+    padding: 12px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: Arial, sans-serif;
+    width: 25%;
+}
+
+.shipping-address-form button:hover {
+    background-color: black;
+}
+
+.shipping-address-form button:focus {
+    outline: none;
+    box-shadow: 0 0 5px black;
+}

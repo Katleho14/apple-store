@@ -2,7 +2,7 @@ import React from 'react';
 import {  Link, useParams } from 'react-router-dom';
 import '../styles/ItemView.css';
 import { useSelector, useDispatch } from 'react-redux';
-import {addItem} from '../redux/slices/cartSlice';
+import {addItem} from '../redux/cartSlice';
 import SideBar from '../Components/SideBar';
 import DashboardBag from '../Components/DashboardBag'
 
