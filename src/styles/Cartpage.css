@@ -80,7 +80,7 @@
   }
   
   .item-quantity button {
-    background-color: #456e9a;
+    background-color: #007bff;
     color: white;
     border: none;
     border-radius: 5px;
@@ -91,7 +91,8 @@
   }
   
   .item-quantity button:hover {
-    background-color: #7da9d8;
+    background-color: #0056b3;
+    
   }
   
   .item-quantity span {
