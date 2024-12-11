@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import '../styles/sideBar.css';
+import '../styles/sidebar.css';
 import logoImage from '../Assets/logoImage.png';
 import  menuIcon from '../Assets/menuIcon.png';
 import storeIcon from '../Assets/storeIcon.png';
