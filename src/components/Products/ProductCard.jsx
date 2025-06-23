@@ -125,6 +125,20 @@ const ProductCard = ({ product }) => {
             {product.inStock ? 'In Stock' : 'Out of Stock'}
           </span>
         </div>
+
+        {/* Add to Cart Button at the bottom */}
+        <div className="product-card-actions">
+          <motion.button
+            className="add-to-cart-card-button"
+            onClick={handleAddToCart}
+            disabled={!product.inStock}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <ShoppingBag size={16} />
+            Add to Cart
+          </motion.button>
+        </div>
       </div>
     </motion.div>
   );
