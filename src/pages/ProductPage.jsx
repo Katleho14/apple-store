@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Star, Heart, ShoppingBag, Truck, Shield, RotateCcw } from 'lucide-react';
 import { addToCart } from '../store/slices/cartSlice';
+import { toggleWishlist } from '../store/slices/wishlistSlice';
 import { addNotification } from '../store/slices/uiSlice';
 import './ProductPage.css';
 
@@ -17,6 +18,9 @@ const ProductPage = () => {
   const product = useSelector(state => 
     state.products.items.find(item => item.id === parseInt(id))
   );
+
+  const wishlistItems = useSelector(state => state.wishlist.items);
+  const isInWishlist = wishlistItems.some(item => item.id === parseInt(id));
 
   if (!product) {
     return (
@@ -35,6 +39,17 @@ const ProductPage = () => {
       type: 'success',
       message: `${quantity} ${product.name}${quantity > 1 ? 's' : ''} added to cart!`,
       duration: 3000
+    }));
+  };
+
+  const handleToggleWishlist = () => {
+    dispatch(toggleWishlist(product));
+    dispatch(addNotification({
+      type: isInWishlist ? 'info' : 'success',
+      message: isInWishlist 
+        ? `${product.name} removed from wishlist` 
+        : `${product.name} added to wishlist!`,
+      duration: 2000
     }));
   };
 
@@ -171,11 +186,12 @@ const ProductPage = () => {
                 </motion.button>
                 
                 <motion.button
-                  className="wishlist-button"
+                  className={`wishlist-button ${isInWishlist ? 'active' : ''}`}
+                  onClick={handleToggleWishlist}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <Heart size={20} />
+                  <Heart size={20} fill={isInWishlist ? "currentColor" : "none"} />
                 </motion.button>
               </div>
             </div>
@@ -186,7 +202,12 @@ const ProductPage = () => {
                 {product.features?.map((feature, index) => (
                   <li key={index}>{feature}</li>
                 )) || (
-                  <li>Premium quality construction</li>
+                  <>
+                    <li>Premium quality construction</li>
+                    <li>Advanced technology integration</li>
+                    <li>Sleek and modern design</li>
+                    <li>User-friendly interface</li>
+                  </>
                 )}
               </ul>
             </div>
@@ -210,7 +231,7 @@ const ProductPage = () => {
 
         <div className="product-description-section">
           <h2>Product Description</h2>
-          <p>{product.longDescription}</p>
+          <p>{product.longDescription || "This premium product combines cutting-edge technology with exceptional design to deliver an outstanding user experience. Crafted with attention to detail and built to last, it represents the perfect balance of form and function. Whether you're a professional or enthusiast, this product will exceed your expectations and enhance your daily routine."}</p>
         </div>
       </div>
     </div>

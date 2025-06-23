@@ -1,15 +1,18 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ShoppingBag, Heart, Star } from 'lucide-react';
 import { addToCart } from '../../store/slices/cartSlice';
+import { toggleWishlist } from '../../store/slices/wishlistSlice';
 import { addNotification } from '../../store/slices/uiSlice';
 import './ProductCard.css';
 
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const wishlistItems = useSelector(state => state.wishlist.items);
+  const isInWishlist = wishlistItems.some(item => item.id === product.id);
 
   const handleAddToCart = (e) => {
     e.stopPropagation();
@@ -18,6 +21,18 @@ const ProductCard = ({ product }) => {
       type: 'success',
       message: `${product.name} added to cart!`,
       duration: 3000
+    }));
+  };
+
+  const handleToggleWishlist = (e) => {
+    e.stopPropagation();
+    dispatch(toggleWishlist(product));
+    dispatch(addNotification({
+      type: isInWishlist ? 'info' : 'success',
+      message: isInWishlist 
+        ? `${product.name} removed from wishlist` 
+        : `${product.name} added to wishlist!`,
+      duration: 2000
     }));
   };
 
@@ -59,11 +74,11 @@ const ProductCard = ({ product }) => {
         
         <div className="product-actions">
           <button
-            className="action-button wishlist"
-            onClick={(e) => e.stopPropagation()}
-            aria-label="Add to wishlist"
+            className={`action-button wishlist ${isInWishlist ? 'active' : ''}`}
+            onClick={handleToggleWishlist}
+            aria-label={isInWishlist ? "Remove from wishlist" : "Add to wishlist"}
           >
-            <Heart size={18} />
+            <Heart size={18} fill={isInWishlist ? "currentColor" : "none"} />
           </button>
           <button
             className="action-button cart"
